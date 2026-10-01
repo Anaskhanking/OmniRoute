@@ -66,6 +66,9 @@ const IGNORE_FROM_CODE = new Set([
   // them as external execution context, not as product configuration.
   "CODEX_HOME",
   "CODEX_CHATGPT_WEB_BROWSER_HELPER_PROCESS",
+  // Claude Code's own config-root variable: the CLI only SETS it for the child `claude`
+  // process (bin/cli/commands/launch.mjs, setup-claude hint, #12161) — never product config.
+  "CLAUDE_CONFIG_DIR",
   // systemd-injected notify socket path (sd_notify protocol, see
   // scripts/dev/systemd-notify.mjs) — set by systemd only when running under
   // a unit, never user config.
@@ -100,6 +103,9 @@ const IGNORE_FROM_CODE = new Set([
   // CI providers (set by the runner).
   "GITHUB_BASE_REF",
   "GITHUB_BASE_SHA",
+  // Actions-owned output file used by scripts/ci/release-green-result.mjs.
+  // A runner protocol path, not user-configurable OmniRoute environment.
+  "GITHUB_OUTPUT",
   // check-ai-attribution.mjs reads the PR of the Actions event payload when run without args (#14436)
   "GITHUB_EVENT_PATH",
   // Set by the Actions runner; the ts7 ratchet appends its job summary there

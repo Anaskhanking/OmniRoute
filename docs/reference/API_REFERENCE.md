@@ -189,12 +189,14 @@ health, and other ordinary eligibility failures retain their existing OmniRoute 
 Per-request override of the compression plan. Highest precedence — beats the routing-combo
 override, the active profile, auto-trigger, and the panel Default. Values:
 
-| Value         | Effect                                                               |
-| ------------- | -------------------------------------------------------------------- |
-| `off`         | No compression for this request.                                     |
-| `default`     | The panel-derived Default profile (ignores the active profile).      |
-| `engine:<id>` | A single engine when enabled, e.g. `engine:rtk`.                     |
-| `<combo>`     | A named combo, matched by name (case-insensitive) first, then by id. |
+| Value         | Effect                                                                                      |
+| ------------- | ------------------------------------------------------------------------------------------- |
+| `off`         | No compression for this request.                                                            |
+| `default`     | The panel-derived Default profile (ignores the active profile). Lossy engines are left off. |
+| `safe`        | Dedup and whitespace folding only.                                                          |
+| `allow-lossy` | Keep the operator plan for this request, including summaries and style rewrites.            |
+| `engine:<id>` | A single engine when enabled, e.g. `engine:rtk`. Per-request opt-in for that engine.        |
+| `<combo>`     | A named combo, matched by name (case-insensitive) first, then by id.                        |
 
 Notes:
 
@@ -498,12 +500,16 @@ POST /v1/moderations { "model": "omni-moderation-latest", "input": "..." }
 # TTS — returns audio/mpeg (or requested format) body
 POST /v1/audio/speech { "model": "openai/tts-1", "input": "Hello", "voice": "alloy" }
 
+# Soniox TTS requires a language and a voice: `language` defaults to "en"; a missing
+# voice or an OpenAI stock voice name (alloy, nova, …) becomes "Adrian"
+POST /v1/audio/speech { "model": "soniox/tts-rt-v1", "input": "Xin chào", "voice": "Adrian", "language": "vi" }
+
 # Image edit (multipart)
 POST /v1/images/edits  -F image=@input.png -F prompt="..." -F mask=@mask.png
 
 # Video / music generation (provider-prefixed model id)
 POST /v1/videos/generations { "model": "runway/gen-3", "prompt": "..." }
-POST /v1/music/generations  { "model": "suno/v3.5",   "prompt": "..." }
+POST /v1/music/generations  { "model": "kie/suno-v4.0",   "prompt": "..." }
 ```
 
 > **Rerank provider nodes:** `POST /v1/rerank` also routes to OpenAI-compatible provider nodes
@@ -1476,7 +1482,7 @@ Returns the public A2A agent card (name, description, capabilities, skill catalo
 | POST | `/api/evals/suites` | Create a custom eval suite — body validated by `evalSuiteSaveSchema` |
 | GET | `/api/evals/suites/[id]` | Retrieve a custom eval suite |
 
-**Auth:** `/api/cloud/auth` validates a Bearer key directly; the other `/api/cloud/*`, `/api/evals/*`, and `/api/assess` routes require management session/API key. `/api/assess` POST uses `validateBody` with a discriminated-union scope schema.
+**Auth:** `/api/cloud/auth` validates a Bearer key directly and returns the masked key and `projectId` of each connection only for a key with the `manage` / `admin` scope; the other `/api/cloud/*`, `/api/evals/*`, and `/api/assess` routes require management session/API key. `/api/assess` POST uses `validateBody` with a discriminated-union scope schema.
 
 ---
 
