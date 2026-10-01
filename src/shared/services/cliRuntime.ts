@@ -650,6 +650,10 @@ export const getKnownToolPaths = (toolId: string): string[] => {
       ["devin.exe", "devin"],
       ["devin.cmd", "devin"],
     ],
+    omp: [
+      ["omp.cmd", "omp"],
+      ["omp.exe", "omp"],
+    ],
   };
 
   const bins = toolBins[toolId] || [];
@@ -690,6 +694,12 @@ export const getKnownToolPaths = (toolId: string): string[] => {
       paths.push(path.join(localAppData, "devin", "cli", "bin", "devin.exe"));
     }
 
+    if (toolId === "omp") {
+      if (localAppData) {
+        paths.push(path.join(localAppData, "omp", "omp.exe"));
+      }
+      paths.push(path.join(home, ".omp", "bin", "omp.exe"));
+    }
     for (const [winName] of bins) {
       appendWindowsKnownBinPaths(paths, winName, npmPrefix, appData, nvmNodePath, validateEnvPath);
     }
@@ -716,6 +726,9 @@ export const getKnownToolPaths = (toolId: string): string[] => {
       }
       if (toolId === "claude") {
         paths.push(path.join(home, ".claude", "bin", posixName));
+      }
+      if (toolId === "omp") {
+        paths.push(path.join(home, ".omp", "bin", posixName));
       }
       // Devin CLI installs to ~/.local/share/devin/bin/devin (Linux)
       // or via shell installer to ~/.devin/bin/devin
