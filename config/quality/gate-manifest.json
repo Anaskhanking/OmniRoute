@@ -13,6 +13,11 @@
       "disposition": "separately-invoked"
     },
     {
+      "name": "check:ai-attribution",
+      "command": "node scripts/check/check-ai-attribution.mjs",
+      "disposition": "separately-invoked"
+    },
+    {
       "name": "check:any-budget:t11",
       "command": "node scripts/check/check-t11-any-budget.mjs",
       "disposition": "separately-invoked"
@@ -40,6 +45,11 @@
     {
       "name": "check:circular-deps",
       "command": "node scripts/check/check-circular-deps.mjs",
+      "disposition": "separately-invoked"
+    },
+    {
+      "name": "check:cli-fingerprint-drift",
+      "command": "node --import tsx/esm scripts/check/check-cli-fingerprint-drift.ts",
       "disposition": "separately-invoked"
     },
     {

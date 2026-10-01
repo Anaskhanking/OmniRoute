@@ -52,7 +52,7 @@ import { randomUUID } from "node:crypto";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { parse as parseYaml } from "yaml";
+import { load as parseYaml } from "js-yaml";
 import { runGateProcess } from "./gate-process.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
