@@ -1746,7 +1746,7 @@ MIT-litsents – üksikasju vaadake failist [LICENSE](LICENSE).
 
 **[⬆ Tagasi üles](#-omniroute)** · Loodud ❤️-ga avatud lähtekoodiga tehisintellekti kogukonnale.
 
-<sub>OmniRoute v3.8.51 · Node ≥22.22.2 · MIT-litsents · <a href="https://omniroute.online">omniroute.online</a></sub>
+<sub>OmniRoute v3.8.52 · Node ≥22.22.2 · MIT-litsents · <a href="https://omniroute.online">omniroute.online</a></sub>
 
 </div>
 <!-- GitHub Discussions on kogukonna küsimuste ja vastuste jaoks lubatud -->

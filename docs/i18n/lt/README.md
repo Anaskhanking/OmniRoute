@@ -1745,7 +1745,7 @@ MIT licencija – išsamesnę informaciją rasite faile [LICENSE](LICENSE).
 
 **[⬆ Atgal į viršų](#-omniroute)** · Sukurta su ❤️ atvirojo kodo DI bendruomenei.
 
-<sub>OmniRoute v3.8.51 · Node ≥22.22.2 · MIT licencija · <a href="https://omniroute.online">omniroute.online</a></sub>
+<sub>OmniRoute v3.8.52 · Node ≥22.22.2 · MIT licencija · <a href="https://omniroute.online">omniroute.online</a></sub>
 
 </div>
 <!-- GitHub Discussions įjungta bendruomenės klausimams ir atsakymams -->

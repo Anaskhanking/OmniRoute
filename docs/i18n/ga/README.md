@@ -1745,7 +1745,7 @@ Ceadúnas MIT - féach [LICENSE](LICENSE) le haghaidh sonraí.
 
 **[⬆ Ar ais go barr](#-omniroute)** · Tógtha le ❤️ don phobal AI foinse oscailte.
 
-<sub>OmniRoute v3.8.51 · Node ≥22.22.2 · Ceadúnas MIT · <a href="https://omniroute.online">omniroute.online</a></sub>
+<sub>OmniRoute v3.8.52 · Node ≥22.22.2 · Ceadúnas MIT · <a href="https://omniroute.online">omniroute.online</a></sub>
 
 </div>
 <!-- GitHub Discussions cumasaithe le haghaidh ceisteanna agus freagraí ón bpobal -->
